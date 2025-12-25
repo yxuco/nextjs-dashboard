@@ -1,0 +1,4 @@
+// This page defines route: /dashboard
+export default function Page() {
+  return (<p>Dashboard Page</p>);
+}
