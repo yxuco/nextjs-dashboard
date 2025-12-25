@@ -3,6 +3,7 @@ import clsx from 'clsx';
 
 export default function InvoiceStatus({ status }: { status: string }) {
   return (
+    // use clsx to conditionally apply classes: https://github.com/lukeed/clsx
     <span
       className={clsx(
         'inline-flex items-center rounded-full px-2 py-1 text-xs',
