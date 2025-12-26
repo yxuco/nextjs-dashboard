@@ -32,6 +32,7 @@ export async function fetchRevenue() {
 
 export async function fetchLatestInvoices() {
   try {
+    // note that column names must match properties in the LatestInvoiceRaw type, although sequence can be different
     const data = await sql<LatestInvoiceRaw[]>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
@@ -62,6 +63,7 @@ export async function fetchCardData() {
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
          FROM invoices`;
 
+    // Run all three queries in parallel
     const data = await Promise.all([
       invoiceCountPromise,
       customerCountPromise,
